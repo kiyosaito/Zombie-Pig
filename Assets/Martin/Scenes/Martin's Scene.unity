@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 641142958}
   - component: {fileID: 641142957}
   m_Layer: 0
-  m_Name: greyboxed enemy
+  m_Name: Hostile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
