@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/Martin/Scenes/Martin's Scene.unity
-  isLoaded: 1
-  isActive: 1
