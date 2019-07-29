@@ -19,18 +19,18 @@ public class Player : MonoBehaviour {
 	float shootTimer = 0f;
 	float shootRate = .1f;
 	float speed = 2f;
-	float movementThreshold = 0.1f;
+	float movementThreshold = 0.25f;
 
 	void Start() {
 		rb = GetComponent<Rigidbody>();
 	}
-
+    
 	void Move() {
 		// Gets input from joystick
 		Vector2 input = new Vector2(joystick.Horizontal, joystick.Vertical);
 		// If input is less than movement threshold, set input to zero
 		if (input.x * input.x + input.y * input.y < movementThreshold * movementThreshold) {
-			input = Vector2.zero;
+			input = input.normalized*0.001f;
 		} else {
 			input = input.normalized;
 		}
