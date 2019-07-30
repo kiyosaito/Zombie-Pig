@@ -41,7 +41,16 @@ public class Bullet : MonoBehaviour {
 		Enemy enemy = other.GetComponent<Enemy>();
 		if (enemy) {
 			enemy.TakeDamage(damage);
+		    Destroy(gameObject);
 		}
-		Destroy(gameObject);
+        // Boucing off walls (currently not working)
+        /*else {
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position-transform.forward*.1f, transform.forward, out hit, 1f)) {
+                Debug.Log("A");
+                transform.forward = Vector3.Reflect(transform.forward, hit.normal);
+                rb.velocity = transform.forward * speed;
+            }
+        }*/
 	}
 }
