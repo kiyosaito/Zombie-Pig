@@ -31,8 +31,15 @@ public class AI : MonoBehaviour
         if (_navMeshAgent.enabled)
         {
             float dist = Vector3.Distance(player.transform.position, this.transform.position);
-            bool patrol false;
+            bool patrol = false;
+            bool follow = (dist < followDistance);
+            if (follow)
+            {
+                float random = Random.Range(0.0f,1.0f));
+                _navMeshAgent.SetDestination(player.transform.position);
+            }
         }
+        
     }
     void NextPatrolPoint()
     {
