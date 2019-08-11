@@ -17,12 +17,12 @@ public class AI : MonoBehaviour
     public float followDistance = 20f;
 
     public Transform[] patrolPoints;
-    private int currentPointIndex = 0;
+    private int _currentPointIndex = 0;
 
     private void Awake()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
-       
+        MoveToNextPatrolPoint();
     }
     
 
@@ -35,19 +35,40 @@ public class AI : MonoBehaviour
             bool follow = (dist < followDistance);
             if (follow)
             {
-                float random = Random.Range(0.0f,1.0f));
+                float random = Random.Range(0.0f, 1.0f);
                 _navMeshAgent.SetDestination(player.transform.position);
             }
+            patrol = !follow && patrolPoints.Length > 0;
+            if (!follow && !patrol)
+            {
+                _navMeshAgent.SetDestination(transform.position);
+            }
+            if (patrol)
+            {
+                if (!_navMeshAgent.pathPending && _navMeshAgent.remainingDistance < 0.5f) 
+                {
+                    MoveToNextPatrolPoint();
+                }
+            }
         }
-        
+    }
+    void MoveToNextPatrolPoint()
+    {
+        if (patrolPoints.Length > 0)
+        {
+            _navMeshAgent.destination = patrolPoints[_currentPointIndex].position;
+
+            _currentPointIndex++;
+            _currentPointIndex %= patrolPoints.Length;
+        }
     }
     void NextPatrolPoint()
     {
         if (patrolPoints.Length>0)
         {
-            _navMeshAgent.destination = patrolPoints[currentPointIndex].position;
-            currentPointIndex++;
-            currentPointIndex %= patrolPoints.Length;
+            _navMeshAgent.destination = patrolPoints[_currentPointIndex].position;
+            _currentPointIndex++;
+            _currentPointIndex %= patrolPoints.Length;
 
         }
     }
