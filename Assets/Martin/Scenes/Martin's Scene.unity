@@ -490,6 +490,8 @@ GameObject:
   - component: {fileID: 162019125}
   - component: {fileID: 162019129}
   - component: {fileID: 162019130}
+  - component: {fileID: 162019131}
+  - component: {fileID: 162019132}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Untagged
@@ -569,25 +571,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &162019129
-MonoBehaviour:
+--- !u!135 &162019129
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 162019124}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9343cbd3af100274ebe560dc0b61d94f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 737371267}
-  attackDistance: 10
-  followDistance: 20
-  patrolPoints:
-  - {fileID: 594852544}
-  - {fileID: 1936935694}
-  - {fileID: 1040358477}
+  serializedVersion: 2
+  m_Radius: 10
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &162019130
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -610,6 +606,42 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &162019131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162019124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec50d4267c6a8f4fb8b022f66219294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  waypointParent: {fileID: 1678045152}
+  movespeed: 8
+  stoppingDistance: 1
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &162019132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162019124}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9343cbd3af100274ebe560dc0b61d94f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  attackDistance: 10
+  followDistance: 20
+  patrolPoints: []
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -1897,7 +1929,7 @@ GameObject:
   - component: {fileID: 737371268}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1968,7 +2000,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 737371267}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 44, y: 0, z: -6}
+  m_LocalPosition: {x: -0, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 534669905}
