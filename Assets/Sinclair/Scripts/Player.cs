@@ -20,10 +20,10 @@ public class Player : MonoBehaviour {
 	// Variables
 	float shootTimer = 0f;
 	float shootRate = .1f;
-	float speed = 2f;
+	float speed = 4f;
 	float movementThreshold = 0.2f;
     float aimingThreshold = 0.2f;
-    Vector3 turretDirection;
+    Vector3 turretDirection = Vector3.forward;
 
 	void Start() {
 		rb = GetComponent<Rigidbody>();
