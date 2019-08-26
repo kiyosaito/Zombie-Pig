@@ -41,8 +41,13 @@ public class Bullet : MonoBehaviour {
 		Enemy enemy = other.GetComponent<Enemy>();
 		if (enemy) {
 			enemy.TakeDamage(damage);
-		    Destroy(gameObject);
+			Destroy(gameObject);
 		}
+
+		if (!(other.tag == "Player")) {
+			Destroy(gameObject);
+		}
+
         // Boucing off walls (currently not working)
         /*else {
             RaycastHit hit;

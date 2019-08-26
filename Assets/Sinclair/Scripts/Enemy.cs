@@ -6,11 +6,13 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour {
 
 	public Transform player;
+	public ScoreManager scoreManager;
 
 	NavMeshAgent agent;
 
 	float health = 50f;
-	float speed = 2f;
+	public float speed = 2f;
+	float damage = 20f;
 
 	void Start() {
 		agent = GetComponent<NavMeshAgent>();
@@ -18,9 +20,13 @@ public class Enemy : MonoBehaviour {
 		if (!player) {
 			player = FindObjectOfType<Player>().transform;
 		}
+		if (!scoreManager) {
+			scoreManager = FindObjectOfType<ScoreManager>();
+		}
 	}
 
 	void Die() {
+		scoreManager.IncrementScore();
 		Destroy(gameObject);
 	}
 
@@ -28,6 +34,12 @@ public class Enemy : MonoBehaviour {
 		health -= d;
 		if (health <= 0) {
 			Die();
+		}
+	}
+
+	void OnCollisionStay(Collision collision) {
+		if (collision.transform.tag == "Player") {
+			collision.transform.GetComponent<Player>().TakeDamage(damage * Time.deltaTime);
 		}
 	}
 
