@@ -83,6 +83,11 @@ ModelImporter:
     2100046: pCylinder7Mat
     2100048: pCylinder8Mat
     2100050: pCylinder9Mat
+    2100052: lambert3SG
+    2100054: lambert4SG
+    2100056: initialShadingGroup
+    2100058: phongE1SG
+    2100060: lambert2SG
     2300000: Corner_Fence26
     2300002: grass
     2300004: pCube1
